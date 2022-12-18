@@ -61,3 +61,10 @@ Edit in the follwing under the "[daemon]" section:
 ```
 cp /etc/sudoers /etc/sudoers.orig
 ```
+```
+nano /etc/sudoers
+```
+Edit in the follwing:
+```
+liveuser ALL=(ALL) NOPASSWD:ALL
+```
