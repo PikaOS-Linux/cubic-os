@@ -231,3 +231,16 @@ menuentry "Start PikaOS Live Session with nomodeset (safe graphics)" {
 }
 
 ```
+## Compression Page
+
+[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_compression.png" width="256"/>]
+
+Choose whatever you like
+
+I recommend gzip
+
+## Creation Page
+
+After this a PikaOS iso will generate in the project files
+
+Congrats!
