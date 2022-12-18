@@ -125,3 +125,13 @@ nala install linux-firmware
 nala install pika-amdgpu-core
 nala upgrade
 ```
+* Install the pika meta package
+```
+nala install pika-gnome-desktop-minimal auto-cpufreq
+```
+* Install our Kernel
+```
+nala install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+```
+
+WARNING IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE USE "apt install" TO UPGRADE IMMEDIATELY 
