@@ -127,11 +127,30 @@ nala upgrade
 ```
 * Install the pika meta package
 ```
-nala install pika-gnome-desktop-minimal auto-cpufreq
+nala install pika-gnome-desktop-minimal auto-cpufreq zram-config
 ```
 * Install our Kernel
 ```
 nala install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
 ```
 
-WARNING IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE USE "apt install" TO UPGRADE IMMEDIATELY 
+⚠️ WARNING ⚠️ : IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE USE "apt install" TO UPGRADE IMMEDIATELY 
+
+### Getting the PikaOS installer
+
+* remove shim stuff as it breaks non secure boot capable OSes
+```
+apt purge shim*
+```
+* remove ubiquity
+```
+apt purge ubiquity*
+```
+* install pika-installer
+```
+nala install calamares-settings-pika
+```
+* remove calamares duplicate desktop entry
+```
+rm /usr/share/applications/calamares.desktop
+```
