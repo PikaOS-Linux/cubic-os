@@ -241,6 +241,8 @@ I recommend gzip
 
 ## Creation Page
 
+[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_final.png" width="256"/>]
+
 After this a PikaOS iso will generate in the project files
 
 Congrats!
