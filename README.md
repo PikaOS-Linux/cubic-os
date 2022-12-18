@@ -154,3 +154,8 @@ nala install calamares-settings-pika
 ```
 rm /usr/share/applications/calamares.desktop
 ```
+### Clean up
+```
+nala clean
+apt clean
+```
