@@ -68,3 +68,12 @@ Edit in the follwing:
 ```
 liveuser ALL=(ALL) NOPASSWD:ALL
 ```
+### Setup default user groups to allow CUDA/ROCm Usage
+```
+echo 'ADD_EXTRA_GROUPS=1' | tee -a /etc/adduser.conf
+
+echo 'EXTRA_GROUPS=video' | tee -a /etc/adduser.conf
+
+echo 'EXTRA_GROUPS=render' | tee -a /etc/adduser.conf
+
+```
