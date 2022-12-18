@@ -30,3 +30,16 @@ The end result should look something like this:
 [<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_name.png" width="256"/>]
 
 ## Virtual Environment
+
+[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_virtenv.png" width="256"/>]
+
+### Setup Live Session User
+
+* Create user
+```
+adduser liveuser
+```
+* Add proper groups to liveuser
+```
+usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin liveuser
+```
