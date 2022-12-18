@@ -80,9 +80,9 @@ echo 'EXTRA_GROUPS=render' | tee -a /etc/adduser.conf
 ### Ubuntu is an ancient African word meaning 'humanity', we are mutating it into a cocketiel
 * Removing Snap and weird ubuntu's stuff
 ```
-sudo apt purge snapd
-sudo apt remove yaru*
-sudo apt remove update-manager*
+apt purge snapd
+apt remove yaru*
+apt remove update-manager*
 ```
 * Installing PikaOS Sources
 ```
@@ -100,4 +100,28 @@ wget https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+files/pika-sources_2.
 apt install ./pika-sources_2.0_all.deb
 rm pika-sources_2.0_all.deb
 ```
+* Getting and configuring nala (10x faster apt)
 
+install nala
+
+```
+sudo apt install nala
+```
+
+disable nala autoremove
+
+```
+nano /etc/nala/nala.conf
+```
+Edit "auto_remove = true" to:
+```
+auto_remove = false
+```
+
+* Update the system
+```
+nala update
+nala install linux-firmware
+nala install pika-amdgpu-core
+nala upgrade
+```
