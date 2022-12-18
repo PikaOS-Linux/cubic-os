@@ -77,3 +77,27 @@ echo 'EXTRA_GROUPS=video' | tee -a /etc/adduser.conf
 echo 'EXTRA_GROUPS=render' | tee -a /etc/adduser.conf
 
 ```
+### Ubuntu is an ancient African word meaning 'humanity', we are mutating it into a cocketiel
+* Removing Snap and weird ubuntu's stuff
+```
+sudo apt purge snapd
+sudo apt remove yaru*
+sudo apt remove update-manager*
+```
+* Installing PikaOS Sources
+```
+sudo apt update
+sudo apt install wget
+```
+go to https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+packages and copy the download link to the latest pika-sources deb
+
+example : https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+files/pika-sources_2.0_all.deb
+
+then download it using wget and install it
+
+```
+wget https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+files/pika-sources_2.0_all.deb
+apt install ./pika-sources_2.0_all.deb
+rm pika-sources_2.0_all.deb
+```
+
