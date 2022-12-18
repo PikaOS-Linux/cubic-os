@@ -159,3 +159,75 @@ rm /usr/share/applications/calamares.desktop
 nala clean
 apt clean
 ```
+## Prepare Page
+
+[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_prepare.png" width="256"/>]
+
+See the fruits of your work!
+
+## Package Page
+
+Sometimes Cubic bugs out and shows this page:
+
+[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_package.png" width="256"/>]
+
+this for the ubiquity package selections and you can just ignore it
+
+## Option Page => Boot Tab
+
+[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_boot.png" width="256"/>]
+
+this is where you configure grub of the live session
+
+please overwrite the following with:
+
+* boot => grub => grub.cfg
+```
+set timeout=30
+
+loadfont unicode
+
+set menu_color_normal=white/black
+set menu_color_highlight=black/light-gray
+
+menuentry "Start PikaOS Live Session" {
+	set gfxpayload=keep
+	linux	/casper/vmlinuz boot=casper file=/cdrom/preseed/ubuntu.seed quiet splash --- 
+	initrd	/casper/initrd.gz
+}
+menuentry "Start PikaOS Live Session with nomodeset (safe graphics)" {
+	set gfxpayload=keep
+	linux	/casper/vmlinuz boot=casper nomodeset file=/cdrom/preseed/ubuntu.seed quiet splash --- 
+	initrd	/casper/initrd.gz
+}
+grub_platform
+if [ "$grub_platform" = "efi" ]; then
+menuentry 'Boot from next volume' {
+	exit 1
+}
+menuentry 'UEFI Firmware Settings' {
+	fwsetup
+}
+else
+menuentry 'Test memory' {
+	linux16 /boot/memtest86+.bin
+}
+fi
+```
+
+* boot => grub => loopback.cfg
+
+```
+
+menuentry "Start PikaOS Live Session" {
+	set gfxpayload=keep
+	linux	/casper/vmlinuz boot=casper file=/cdrom/preseed/ubuntu.seed iso-scan/filename=${iso_path} quiet splash --- 
+	initrd	/casper/initrd.gz
+}
+menuentry "Start PikaOS Live Session with nomodeset (safe graphics)" {
+	set gfxpayload=keep
+	linux	/casper/vmlinuz boot=casper nomodeset file=/cdrom/preseed/ubuntu.seed iso-scan/filename=${iso_path} quiet splash --- 
+	initrd	/casper/initrd.gz
+}
+
+```
