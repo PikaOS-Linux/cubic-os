@@ -27,11 +27,11 @@ PikaOS 22.10 "Kinetic Kudu"
 
 The end result should look something like this:
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_name.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_name.png" width="256"/>
 
 ## Virtual Environment
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_virtenv.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_virtenv.png" width="256"/>
 
 ### Setup Live Session User
 
@@ -161,7 +161,7 @@ apt clean
 ```
 ## Prepare Page
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_prepare.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_prepare.png" width="256"/>
 
 See the fruits of your work!
 
@@ -169,13 +169,13 @@ See the fruits of your work!
 
 Sometimes Cubic bugs out and shows this page:
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_package.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_package.png" width="256"/>
 
 this for the ubiquity package selections and you can just ignore it
 
 ## Option Page => Boot Tab
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_boot.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_boot.png" width="256"/>
 
 this is where you configure grub of the live session
 
@@ -233,7 +233,7 @@ menuentry "Start PikaOS Live Session with nomodeset (safe graphics)" {
 ```
 ## Compression Page
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_compression.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_compression.png" width="256"/>
 
 Choose whatever you like
 
@@ -241,7 +241,7 @@ I recommend gzip
 
 ## Creation Page
 
-[<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_final.png" width="256"/>]
+<img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_final.png" width="256"/>
 
 After this a PikaOS iso will generate in the project files
 
