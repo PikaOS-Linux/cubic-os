@@ -35,11 +35,29 @@ The end result should look something like this:
 
 ### Setup Live Session User
 
-* Create user
+* Create user and set his password to "pika2022"
 ```
 adduser liveuser
 ```
 * Add proper groups to liveuser
 ```
 usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin liveuser
+```
+* Make the live session auto-login with liveuser
+
+```
+cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig  
+```
+```
+nano /etc/gdm3/custom.conf
+```
+Edit in the follwing under the "[daemon]" section:
+```
+#Enabling automatic login
+  AutomaticLoginEnable = true
+  AutomaticLogin = liveuser
+```
+* allow the liveuser to access sudo without password
+```
+cp /etc/sudoers /etc/sudoers.orig
 ```
