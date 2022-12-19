@@ -89,11 +89,12 @@ echo 'EXTRA_GROUPS=render' | tee -a /etc/adduser.conf
 apt purge snapd
 apt remove yaru*
 apt remove update-manager*
+apt remove gnome-initial-setup
 ```
 * Installing PikaOS Sources
 ```
-sudo apt update
-sudo apt install wget
+apt update
+apt install wget
 ```
 go to https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+packages and copy the download link to the latest pika-sources deb
 
@@ -111,7 +112,7 @@ rm pika-sources_2.0_all.deb
 install nala
 
 ```
-sudo apt install nala
+apt install nala
 ```
 
 disable nala autoremove
@@ -131,6 +132,24 @@ nala install linux-firmware
 nala install pika-amdgpu-core
 nala upgrade
 ```
+if mesa gives you non-sense do:
+
+```
+dpkg -r libgl1-amber-dri
+```
+
+then
+
+```
+apt --fix-broken install
+```
+
+and again
+
+```
+nala upgrade
+```
+
 * Install the pika meta package
 ```
 nala install pika-gnome-desktop-minimal auto-cpufreq zram-config
@@ -139,14 +158,13 @@ nala install pika-gnome-desktop-minimal auto-cpufreq zram-config
 ```
 nala install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
 ```
-
-⚠️ WARNING ⚠️ : IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE USE "apt install" TO UPGRADE IMMEDIATELY 
+⚠️ WARNING ⚠️ : IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE OR PUTS ANYTHING IN AUTOREMOVE USE "apt install" TO FIX IT IMMEDIATELY 
 
 ### Getting the PikaOS installer
 
 * remove shim stuff as it breaks non secure boot capable OSes
 ```
-apt purge shim*
+apt purge shim* --allow-remove-essential
 ```
 * remove ubiquity
 ```
