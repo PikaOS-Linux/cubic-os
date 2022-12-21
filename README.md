@@ -156,7 +156,7 @@ nala install pika-gnome-desktop-minimal auto-cpufreq zram-config
 ```
 * Install our Kernel
 ```
-nala install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
+nala install kernel-pika
 ```
 ⚠️ WARNING ⚠️ : IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE OR PUTS ANYTHING IN AUTOREMOVE USE "apt install" TO FIX IT IMMEDIATELY 
 
