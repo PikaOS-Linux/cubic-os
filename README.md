@@ -43,11 +43,11 @@ The end result should look something like this:
 
 * Create user and set his password to "pika2022"
 ```
-adduser liveuser
+adduser pikaos
 ```
 * Add proper groups to liveuser
 ```
-usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin liveuser
+usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin pikaos
 ```
 * Make the live session auto-login with liveuser
 
