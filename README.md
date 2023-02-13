@@ -45,7 +45,7 @@ The end result should look something like this:
 ```
 adduser pikaos
 ```
-* Add proper groups to liveuser
+* Add proper groups to pikaos
 ```
 usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin pikaos
 ```
@@ -61,9 +61,9 @@ Edit in the follwing under the "[daemon]" section:
 ```
 #Enabling automatic login
   AutomaticLoginEnable = true
-  AutomaticLogin = liveuser
+  AutomaticLogin = pikaos
 ```
-* allow the liveuser to access sudo without password
+* allow the pikaos to access sudo without password
 ```
 cp /etc/sudoers /etc/sudoers.orig
 ```
@@ -72,7 +72,7 @@ nano /etc/sudoers
 ```
 Edit in the follwing:
 ```
-liveuser ALL=(ALL) NOPASSWD:ALL
+pikaos ALL=(ALL) NOPASSWD:ALL
 ```
 ### Setup default user groups to allow CUDA/ROCm Usage
 ```
@@ -103,9 +103,19 @@ example : https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+files/pika-sourc
 then download it using wget and install it
 
 ```
-wget https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+files/pika-sources_2.0_all.deb
-apt install ./pika-sources_2.0_all.deb
-rm pika-sources_2.0_all.deb
+wget https://launchpad.net/~pikaos/+archive/ubuntu/baseos/+files/pika-sources_3.0-99pika18_all.deb
+```
+Install Source: (eventually it will ask for confirmation: Y)
+```
+apt install ./pika-sources_3.0-99pika18_all.deb
+```
+Remove Source:
+```
+rm pika-sources_3.0-99pika18_all.deb
+```
+Update Sources/PPAs
+```
+apt update
 ```
 * Getting and configuring nala (10x faster apt)
 
@@ -127,10 +137,10 @@ auto_remove = false
 
 * Update the system
 ```
-nala update
-nala install linux-firmware
-nala install pika-amdgpu-core
-nala upgrade
+apt update
+apt install linux-firmware
+apt install pika-amdgpu-core
+apt upgrade
 ```
 if mesa gives you non-sense do:
 
@@ -147,18 +157,32 @@ apt --fix-broken install
 and again
 
 ```
-nala upgrade
+apt upgrade
 ```
 
 * Install the pika meta package
 ```
-nala install pika-gnome-desktop-minimal auto-cpufreq zram-config
+apt install pika-gnome-desktop-minimal zram-config
 ```
-* Install our Kernel
-```
-nala install kernel-pika
-```
+~~* Install our Kernel~~
+
+~~apt install kernel-pika~~
+
 ⚠️ WARNING ⚠️ : IN CASE NALA OR APT HOLDS ANY PACKAGE FROM UPGRADE OR PUTS ANYTHING IN AUTOREMOVE USE "apt install" TO FIX IT IMMEDIATELY 
+Example:
+	Held packages: (make sure to double check that snapd ain't sneaking back like: gir1.2-snapd-2)
+```
+The following packages were automatically installed and are no longer required:
+  gir1.2-snapd-2 gnome-themes-extra gnome-themes-extra-data gtk2-engines-murrine gtk2-engines-pixbuf
+  libsysmetrics1 python3-distupgrade python3-update-manager ubuntu-release-upgrader-core xwayland
+Use 'apt autoremove' to remove them.
+The following packages have been kept back:
+  plymouth plymouth-label plymouth-theme-spinner
+```
+Install:
+```
+apt install gnome-themes-extra gnome-themes-extra-data gtk2-engines-murrine gtk2-engines-pixbuf libsysmetrics1 python3-distupgrade python3-update-manager ubuntu-release-upgrader-core xwayland plymouth plymouth-label plymouth-theme-spinner
+```
 
 ### Getting the PikaOS installer
 
@@ -172,16 +196,53 @@ apt purge ubiquity*
 ```
 * install pika-installer
 ```
-nala install calamares-settings-pika
+apt install calamares-settings-pika
 ```
 * remove calamares duplicate desktop entry
 ```
 rm /usr/share/applications/calamares.desktop
 ```
-### Clean up
+
+* Remove Ubuntu extra stuff:
 ```
+apt remove *libreoffice* thunderbird shotwell remmina totem
+apt remove gnome-mines gnome-sudoku gnome-mahjongg aisleriot
+```
+
+### Clean up
+
+* Install Extras:
+```
+apt install nfs-common
+```
+
+* Remove Ubuntu extra stuff:
+```
+apt remove *libreoffice* thunderbird shotwell remmina totem
+apt remove gnome-mines gnome-sudoku gnome-mahjongg aisleriot
+```
+
+* Clean
+```
+apt autoremove
 nala clean
 apt clean
+```
+Ex of autoremove: 
+```
+The following packages were automatically installed and are no longer required:
+  gir1.2-goa-1.0 gir1.2-snapd-2 python3-dateutil ubuntu-advantage-desktop-daemon
+  gir1.2-totem-1.0 gir1.2-totemplparser-1.0 guile-3.0-libs libabw-0.1-1 libavahi-ui-gtk3-0
+  libboost-filesystem1.74.0 libboost-locale1.74.0 libcdr-0.1-1 libclucene-contribs1v5
+  libclucene-core1v5 libe-book-0.1-1 libeot0 libepubgen-0.1-1 libetonyek-0.1-1 libexttextcat-2.0-0
+  libexttextcat-data libfreehand-0.1-1 libfreerdp-client2-2 libgc1 libgnome-games-support-1-3
+  libgnome-games-support-common liblangtag-common liblangtag1 libmhash2 libmspub-0.1-1 libmwaw-0.3-3
+  libmythes-1.2-0 libodfgen-0.1-1 liborcus-0.17-0 liborcus-parser-0.17-0 libpagemaker-0.0-0
+  libqqwing2v5 libraptor2-0 librasqal3 librdf0 librevenge-0.0-0 libtotem0 libuno-cppu3
+  libuno-cppuhelpergcc3-3 libuno-purpenvhelpergcc3-3 libuno-sal3 libuno-salhelpergcc3-3 libvisio-0.1-1
+  libvncclient1 libwpd-0.10-10 libwpg-0.3-3 libwps-0.4-4 libxmlsec1 libxmlsec1-nss lp-solve
+  python3-debconf remmina-common shotwell-common totem-common uno-libs-private ure
+
 ```
 ## Prepare Page
 
@@ -205,7 +266,7 @@ this is where you configure grub of the live session
 
 please overwrite the following with:
 
-* boot => grub => grub.cfg
+* boot => grub => grub.cfg (You can remove quiet and splash to have full verbose)
 ```
 set timeout=30
 
@@ -239,7 +300,7 @@ menuentry 'Test memory' {
 fi
 ```
 
-* boot => grub => loopback.cfg
+* boot => grub => loopback.cfg (You can remove quiet and splash to have full verbose)
 
 ```
 
@@ -255,6 +316,7 @@ menuentry "Start PikaOS Live Session with nomodeset (safe graphics)" {
 }
 
 ```
+
 ## Compression Page
 
 <img src="https://github.com/PikaOS-Linux/cubic-os/blob/main/assets/cubic_compression.png" width="256"/>
