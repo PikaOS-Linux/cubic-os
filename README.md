@@ -203,22 +203,13 @@ apt install calamares-settings-pika
 rm /usr/share/applications/calamares.desktop
 ```
 
-* Remove Ubuntu extra stuff:
-```
-apt remove *libreoffice* thunderbird shotwell remmina totem
-apt remove gnome-mines gnome-sudoku gnome-mahjongg aisleriot
-```
-
 ### Clean up
 
-* Install Extras:
-```
-apt install nfs-common
-```
-
 * Remove Ubuntu extra stuff:
 ```
 apt remove *libreoffice* thunderbird shotwell remmina totem
+```
+```
 apt remove gnome-mines gnome-sudoku gnome-mahjongg aisleriot
 ```
 
